@@ -4,7 +4,6 @@ import com.domain.Json.entityes.Person;
 import com.domain.Json.repositories.PersonRepo;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,16 +28,20 @@ public class Controller {
     @RequestMapping("postgres")
     public void json()  {
         URL resourse = this.getClass().getClassLoader().getResource("people.json");
+
         if(resourse != null){
-            File jsonFile = new File(resourse.getFile());
-            ObjectMapper objectMapper = new ObjectMapper();
+             File jsonFile = new File(String.valueOf(resourse));
+             ObjectMapper objectMapper = new ObjectMapper();
             try {
                 List <Person> people = objectMapper.readValue(jsonFile, new TypeReference<List<Person>>() {
                 });
                 personRepo.saveAll(people);
+                logger.info("all record saved");
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }else {
+            logger.warn("url is null");
         }
     }
 }
