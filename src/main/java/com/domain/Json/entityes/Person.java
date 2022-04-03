@@ -4,8 +4,10 @@ package com.domain.Json.entityes;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(schema = "postgres", name = "person")
 public class Person {
 
     @Id
@@ -14,11 +16,11 @@ public class Person {
 
     private String firstName;
     private String lastName;
-    private String address;
+    private String gender;
     private long id;
     private String country;
     private String email;
-    private String ipAdderess;
+    private String ipAddress;
 
     public Person() {
     }
@@ -36,16 +38,30 @@ public class Person {
 //        this.address = address;
 //    }
 
-    public Person(Long pk, String firstName, String lastName, String address, long id, String country, String email, String ipAdderess) {
+//    public Person(Long pk, String firstName, String lastName, String address, long id, String country, String email, String ipAdderess) {
+//        this.pk = pk;
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.address = address;
+//        this.id = id;
+//        this.country = country;
+//        this.email = email;
+//        this.ipAddress = ipAdderess;
+//    }
+
+
+    public Person(Long pk, String firstName, String lastName, String gender, long id, String country, String email, String ipAddress) {
         this.pk = pk;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.address = address;
+        this.gender = gender;
         this.id = id;
         this.country = country;
         this.email = email;
-        this.ipAdderess = ipAdderess;
+        this.ipAddress = ipAddress;
     }
+
+
 
     public Long getPk() {
         return pk;
@@ -53,6 +69,26 @@ public class Person {
 
     public void setPk(Long pk) {
         this.pk = pk;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public void setId(long id) {
@@ -75,53 +111,46 @@ public class Person {
         this.email = email;
     }
 
-    public String getIpAdderess() {
-        return ipAdderess;
+    public String getIpAddress() {
+        return ipAddress;
     }
 
-    public void setIpAdderess(String ipAdderess) {
-        this.ipAdderess = ipAdderess;
+    public void setIpAddress(String ipAddress) {
+        this.ipAddress = ipAddress;
     }
 
-    public long getId() {
-        return id;
+    public String getGender() {
+        return gender;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
     @Override
     public String toString() {
-        return "\nPerson{" +
-                "id=" + id +
+        return "Person{" +
+                "pk=" + pk +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", address='" + address + '\'' +
+                ", gender='" + gender + '\'' +
+                ", id=" + id +
+                ", country='" + country + '\'' +
+                ", email='" + email + '\'' +
+                ", ipAddress='" + ipAddress + '\'' +
                 '}';
     }
+
+    //    @Override
+//    public String toString() {
+//        return "\nPerson{" +
+//                "id=" + id +
+//                ", firstName='" + firstName + '\'' +
+//                ", lastName='" + lastName + '\'' +
+//                ", address='" + address + '\'' +
+//                '}';
+//    }
 }

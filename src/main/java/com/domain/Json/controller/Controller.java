@@ -30,11 +30,11 @@ public class Controller {
         URL resourse = this.getClass().getClassLoader().getResource("people.json");
 
         if(resourse != null){
-             File jsonFile = new File(String.valueOf(resourse));
+
              ObjectMapper objectMapper = new ObjectMapper();
             try {
-                List <Person> people = objectMapper.readValue(jsonFile, new TypeReference<List<Person>>() {
-                });
+                List <Person> people = objectMapper.readValue(resourse, new TypeReference<List<Person>>()  {  } );
+
                 personRepo.saveAll(people);
                 logger.info("all record saved");
             } catch (IOException e) {
